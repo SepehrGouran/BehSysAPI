@@ -8,12 +8,12 @@
  */
 class LoginResult
 {
+    public $status;
     public $userId;
     public $username;
     public $userPic;
     public $fName;
     public $fLast;
-
 
     function toJSON() {
         return json_encode($this);

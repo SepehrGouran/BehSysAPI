@@ -22,12 +22,19 @@ if (isset($_POST['login'])) {
         echo "Error";
     } else if ($login != null) {
         $row = $login->fetch_row();
-        $login_result = new LoginResult();
-        $login_result->userId = $row[0];
-        $login_result->username = $row[1];
-        $login_result->fLast = $row[6];
-        $login_result->fName = $row[5];
-        $login_result->userPic = $row[4];
-        echo $login_result->toJSON();
+        if ($row != null) {
+            $login_result = new LoginResult();
+            $login_result->status = "accept";
+            $login_result->userId = $row[0];
+            $login_result->username = $row[1];
+            $login_result->fLast = $row[6];
+            $login_result->fName = $row[5];
+            $login_result->userPic = $row[4];
+            echo $login_result->toJSON();
+        } else {
+            $login_result = new LoginResult();
+            $login_result->status = "denied";
+            echo $login_result->toJSON();
+        }
     }
 }
