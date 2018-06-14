@@ -14,6 +14,7 @@ $dbname = "behsysne_api";
 function login ($username, $password) {
     $connection = new mysqli($GLOBALS['servername'], $GLOBALS['user'],
         $GLOBALS['pass'], $GLOBALS['dbname']);
+    mysqli_set_charset($connection,"utf8");
 
     if ($connection->connect_error) {
         die("Connection failed ".$connection->connect_error);
