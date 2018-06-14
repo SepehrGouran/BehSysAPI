@@ -8,8 +8,6 @@
 
 require_once("../results/LoginResult.php");
 
-//echo $login_result->toJSON();
-
 session_start();
 include '../database/database.php';
 
@@ -27,7 +25,7 @@ if (isset($_POST['login'])) {
         $login_result = new LoginResult();
         $login_result->userId = $row[0];
         $login_result->username = $row[1];
-        $login_result->fLast = "ُییس";
+        $login_result->fLast = $row[6];
         $login_result->fName = $row[5];
         $login_result->userPic = $row[4];
         echo $login_result->toJSON();
