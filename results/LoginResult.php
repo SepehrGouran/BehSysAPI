@@ -14,6 +14,7 @@ class LoginResult
     public $userPic;
     public $fName;
     public $fLast;
+    public $token;
 
     function toJSON() {
         return json_encode($this);

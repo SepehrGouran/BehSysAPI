@@ -13,6 +13,16 @@ require_once("../results/LoginResult.php");
 
 session_start();
 include '../database/database.php';
+include '../auth/auth.php';
+
+$token = getBearerToken();
+$auth = auth($token);
+if ($auth->num_rows == 1) {
+
+    // Authenticated routs
+
+
+}
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -35,6 +45,7 @@ if (isset($data['login'])) {
             $login_result->fLast = $row[6];
             $login_result->fName = $row[5];
             $login_result->userPic = $row[4];
+            $login_result->token = $row[8];
             echo $login_result->toJSON();
         } else {
             $login_result = new LoginResult();
